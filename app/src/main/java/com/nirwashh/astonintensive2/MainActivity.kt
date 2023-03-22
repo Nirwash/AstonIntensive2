@@ -26,9 +26,6 @@ class MainActivity : AppCompatActivity() {
                 countUp()
                 tvCount.text = count.toString()
             }
-            btnSayHello.setOnClickListener {
-                launchHelloActivity(count)
-            }
         }
     }
 
@@ -37,11 +34,6 @@ class MainActivity : AppCompatActivity() {
         outState.putInt(COUNT, count)
     }
 
-    private fun launchHelloActivity(count: Int) {
-        val intent = Intent(this@MainActivity, HelloActivity::class.java)
-        intent.putExtra(COUNT, count)
-        startActivity(intent)
-    }
 
     private fun countUp() {
         count++

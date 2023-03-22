@@ -4,4 +4,5 @@
     <string name="count_initial_value">0</string>
     <string name="count">count</string>
     <string name="hello">Hello!</string>
+    <string name="edit_text">This is an edit text</string>
 </resources>

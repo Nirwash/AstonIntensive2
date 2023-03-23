@@ -1,57 +1,64 @@
 package com.nirwashh.astonintensive2
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
-import android.view.View
+import android.provider.MediaStore
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ShareCompat
 import com.nirwashh.astonintensive2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private var count = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if (savedInstanceState != null) {
-            count = savedInstanceState.getInt(COUNT)
-            updateUi()
-        }
-
-
         with(binding) {
-            btnCount.setOnClickListener {
-                countUp()
-                updateUi()
-            }
-            btnSayHello.setOnClickListener {
-                launchHelloActivity(count)
-            }
+            btnOpenWebsite.setOnClickListener { openWebsite() }
+            btnOpenLocation.setOnClickListener { openLocation() }
+            btnSendMessage.setOnClickListener { shareText() }
+            btnOpenCamera.setOnClickListener { takePicture() }
         }
+
     }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putInt(COUNT, count)
+    private fun shareText() {
+        val text = binding.edMessage.text.toString()
+        val mimeType = "text/plain"
+        val shareCompat = ShareCompat.IntentBuilder(this@MainActivity)
+            .setType(mimeType)
+            .setChooserTitle(R.string.share_text_with)
+            .setText(text)
+            .startChooser()
     }
 
-    private fun launchHelloActivity(count: Int) {
-        val intent = Intent(this@MainActivity, HelloActivity::class.java)
-        intent.putExtra(COUNT, count)
+    private fun openWebsite() {
+        val url = "http://${binding.edWebsite.text}"
+        val webPage = Uri.parse(url)
+        val intent = Intent(Intent.ACTION_VIEW, webPage)
+        if (intent.resolveActivity(packageManager) != null)
+            startActivity(intent)
+        else
+            Log.d("ImplicitIntents", "Can't handle this intent!")
+    }
+
+    private fun openLocation() {
+        val location = binding.edLocation.text.toString()
+        val addressUri = Uri.parse("geo:0,0?q=$location")
+        val intent = Intent(Intent.ACTION_VIEW, addressUri)
+        intent.setPackage("com.google.android.apps.maps")
         startActivity(intent)
     }
 
-    private fun countUp() {
-        count++
-    }
-
-    private fun updateUi() {
-        binding.tvCount.text = count.toString()
-    }
-
-    companion object {
-        private const val COUNT = "count"
+    private fun takePicture() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        if (intent.resolveActivity(packageManager) != null)
+            startActivity(intent)
+        else
+            Log.d("ImplicitIntents", "Can't handle this intent!")
     }
 }

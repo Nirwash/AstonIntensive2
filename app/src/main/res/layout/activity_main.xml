@@ -6,45 +6,89 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_say_hello"
-        android:layout_width="0dp"
+    <EditText
+        android:id="@+id/ed_website"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_16"
-        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="@dimen/margin_16"
-        android:text="@string/say_hello"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:hint="@string/please_enter_website"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_count"
+        android:id="@+id/btn_open_website"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:text="@string/open_website"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        app:layout_constraintStart_toStartOf="@id/ed_website"
+        app:layout_constraintTop_toBottomOf="@id/ed_website" />
+
+    <EditText
+        android:id="@+id/ed_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="@dimen/margin_16"
         android:layout_marginBottom="@dimen/margin_16"
-        android:text="@string/count"
+        android:hint="@string/please_enter_location"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_open_website" />
+
+    <Button
+        android:id="@+id/btn_open_location"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:text="@string/open_location"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        app:layout_constraintStart_toStartOf="@id/ed_location"
+        app:layout_constraintTop_toBottomOf="@id/ed_location" />
+
+    <EditText
+        android:id="@+id/ed_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:hint="@string/please_enter_message"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_open_location" />
+
+    <Button
+        android:id="@+id/btn_send_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16"
+        android:text="@string/share_text"
+        app:layout_constraintEnd_toEndOf="@id/guideline"
+        app:layout_constraintStart_toStartOf="@id/ed_message"
+        app:layout_constraintTop_toBottomOf="@id/ed_message" />
+
+    <Button
+        android:id="@+id/btn_open_camera"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16"
+        android:text="@string/take_a_picture"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_count"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="@dimen/margin_16"
-        android:layout_marginEnd="@dimen/margin_16"
-        android:background="#FFFF00"
-        android:text="@string/count_initial_value"
-        android:textColor="@color/purple_500"
-        android:gravity="center"
-        android:textSize="160sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btn_count"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_say_hello" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

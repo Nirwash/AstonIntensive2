@@ -4,4 +4,12 @@
     <string name="count_initial_value">0</string>
     <string name="count">count</string>
     <string name="hello">Hello!</string>
+    <string name="please_enter_website">Please, enter website</string>
+    <string name="open_website">open website</string>
+    <string name="please_enter_location">Please, enter location</string>
+    <string name="please_enter_message">Please, enter message</string>
+    <string name="take_a_picture">take a picture</string>
+    <string name="share_text">share this text</string>
+    <string name="share_text_with">Share this text with:</string>
+    <string name="open_location">open location</string>
 </resources>

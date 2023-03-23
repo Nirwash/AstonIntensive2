@@ -47,6 +47,8 @@ class MainActivity : AppCompatActivity() {
         count++
     }
 
+//todo сделать функцию updateUi, где сеттить значение в текстВью
+
     companion object {
         private const val COUNT = "count"
     }

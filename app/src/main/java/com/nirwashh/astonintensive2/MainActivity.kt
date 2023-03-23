@@ -17,14 +17,14 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState != null) {
             count = savedInstanceState.getInt(COUNT)
-            binding.tvCount.text = savedInstanceState.getInt(COUNT).toString()
+            updateUi()
         }
 
 
         with(binding) {
             btnCount.setOnClickListener {
                 countUp()
-                tvCount.text = count.toString()
+                updateUi()
             }
             btnSayHello.setOnClickListener {
                 launchHelloActivity(count)
@@ -47,7 +47,9 @@ class MainActivity : AppCompatActivity() {
         count++
     }
 
-//todo сделать функцию updateUi, где сеттить значение в текстВью
+    private fun updateUi() {
+        binding.tvCount.text = count.toString()
+    }
 
     companion object {
         private const val COUNT = "count"
